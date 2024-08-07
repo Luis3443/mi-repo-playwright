@@ -71,8 +71,8 @@ test.describe('Home', () => {
         // Locate the element (by xpath selectors) and save it into a variable
         const searchIcon = homePage.searchIcon;
         // Verify the element is visible
-        // await expect(searchIcon).toBeVisible();
-        await expect(searchIcon).not.toBeVisible();
+        await expect(searchIcon).toBeVisible();
+        // await expect(searchIcon).not.toBeVisible();
         
     });
 
