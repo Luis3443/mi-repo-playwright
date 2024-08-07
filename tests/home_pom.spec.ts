@@ -72,7 +72,7 @@ test.describe('Home', () => {
         const searchIcon = homePage.searchIcon;
         // Verify the element is visible
         // await expect(searchIcon).toBeVisible();
-        await expect(searchIcon).toBeHidden();
+        await expect(searchIcon).not.toBeVisible();
         
     });
 
