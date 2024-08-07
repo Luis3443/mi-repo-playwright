@@ -13,5 +13,5 @@ jobs:
         run: npm ci
       - name: Install Playwright
         run: npx playwright install --with-deps
-      - Run yourt tests
+      - name: Run yourt tests
         run: npx playwright test tests/home_pom.spec.ts
