@@ -1,14 +1,16 @@
-name: "e2e"
-on: [push]
-jobs:
-  test-e2e:
-    name: Run E2E tests
+name: "e2e" # workflow name
+on: [push]  # Event that will execute the workflow
+jobs:  # Job (a set of steps we want to be executed)
+  test-e2e:  # Job id
+    name: Run E2E tests  # Job name
     runs-on: ubuntu-20.04
     steps: 
+      # Stuff we want to be utilized before executing the steps
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      # Set of steps we want to be executed
       - name: Install dependencies 
         run: npm ci
       - name: Install Playwright
