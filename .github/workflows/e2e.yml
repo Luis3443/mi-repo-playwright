@@ -22,5 +22,5 @@ jobs:  # Job (a set of steps we want to be executed)
         if: always()  
         uses: actions/upload-artifact@v2
         with:
-          name: Test Results  # Artifact name
+          name: TestResults  # Artifact name
           path: test-results  # path (folder) where the test results will be obtained of
