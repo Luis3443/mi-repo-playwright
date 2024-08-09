@@ -20,7 +20,7 @@ jobs:  # Job (a set of steps we want to be executed)
       - name: Upload test results  # Integrates the test results report
         # "Always" to generate the test results always
         if: always()  
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: TestResults  # Artifact name
           path: test-results  # path (folder) where the test results will be obtained of
