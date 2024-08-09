@@ -24,8 +24,8 @@ export default defineConfig({
   // reporter: 'html',
   // reporter: 'allure-playwright',
   // reporter: [ ['html'], ['list'] ],  // Wnen we want to use several types of reports
-  // reporter: [ ['allure-playwright'], ['line'] ],  // Wnen we want to use several types of reports
-  reporter: [ ['allure-playwright', {outputFolder: 'test-results'}], ['line'] ],  // Wnen we want to use several types of reports.
+  reporter: [ ['allure-playwright'], ['line'] ],  // Wnen we want to use several types of reports
+  // reporter: [ ['allure-playwright', {outputFolder: 'test-results'}], ['line'] ],  // Wnen we want to use several types of reports.
     // Note: The stuff inside "{}" means that the allure test results now will be saved in "test-results" folder instead in "allure-report"
   
 
