@@ -6,8 +6,8 @@ jobs:  # Job (a set of steps we want to be executed)
     runs-on: ubuntu-20.04
     steps: 
       # Stuff we want to be utilized before executing the steps
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '16'
       # Set of steps we want to be executed
