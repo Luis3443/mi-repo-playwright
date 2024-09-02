@@ -3,7 +3,7 @@ import { Page, Locator } from '@playwright/test'
 // Creating the class
 class HomePage {
 
-    // Declaring the properties of the class (mandatory in TypeScript)
+    // Declaring the properties (variables for the locators) of the class (mandatory in TypeScript)
     page: Page;
     getStartedBtn: Locator;
     headingText: Locator;
@@ -30,8 +30,15 @@ class HomePage {
     }
 
     // Get and return the text of each nav link
-    getNavLinksText() {
-        return this.navLinks.allTextContents();
+    async getNavLinksText() {
+        return await this.navLinks.allTextContents();
+    }
+
+    // Print out all the links
+    async PrintAllNavLinks() {
+        for (const element of await this.navLinks.elementHandles()) { // The method "elementHandles()" is to be able to iterate through all the elements that are into "navLinks"
+            console.log(await element.textContent());
+        }
     }
 
 }

@@ -34,21 +34,26 @@ test.describe('Home', () => {
         await expect(page).toHaveURL(/.*#get-started/);  // Assertion using a regex
     });
 
-    test('Verify heading text is visible using text selector', async ({ page }) => {
+    test('Verify heading text is visible using Text selector', async ({ page }) => {
         // Open url
         await page.goto('https://practice.sdetunicorns.com/');
+
         // Locate the element (by text selector) and save it into a variable
-        const headingText = page.locator('text=Think different. Make different.');
+        const headingText = page.locator('text=Think different. Make different.'); // Case insensitive
+        // const headingText = page.locator('text="Think different. Make different."'); // Case sensitive
+
         // Verify heading text is visible
         await expect(headingText).toBeVisible();
     });
     
-    test('Verify "Home" link is enabled using css and text selectors', async ({ page }) => {
+    test('Verify "Home" link is enabled using CSS and Text selectors', async ({ page }) => {
         // Open url
         await page.goto('https://practice.sdetunicorns.com/');
+
         // Locate the element (by text css and text selectors) and save it into a variable
         const homeText = page.locator('#zak-primary-menu >> text=Home'); 
         // const homeText = page.locator('#zak-primary-menu:has-text("Home")'); // Works as well
+
         // Verify home text is enabled
         await expect(homeText).toBeEnabled();
     });
@@ -152,7 +157,7 @@ test.describe('Home', () => {
         // Locate all the elements (by css selector and "last()" method) and save it into a variable
         const navLinks = page.locator('#zak-primary-menu li[id*="menu-item-"]');
         // Print out all the links
-        for (const element of await navLinks.elementHandles()) { // The method "elementHandles()" is to be able to iterate through all the elements that are into "navLinks"
+        for (const element of await navLinks.elementHandles()) { // The method "elementHandles()" is to be able to have access to all the elements that are into "navLinks"
             console.log(await element.textContent());
         }
     });
@@ -167,13 +172,20 @@ test.describe('Home', () => {
         await page.locator('#menu-item-493').click(); 
 
         // Locate "Send Us Message" title  (by xpath selector) and focus on it
-        await page.locator('//h3[contains(text(),"Send Us Message")]').focus(); 
+        // await page.locator('//h3[contains(text(),"Send Us Message")]').focus(); 
+        await page.locator('//h3[normalize-space()="Send Us Message"]').focus();     // Works as well
 
-        // Fill out the form and click on "Submit" button
-        await page.getByRole('textbox', {name:'Name'}).fill('TestName');
-        await page.getByRole('textbox', {name:'Email'}).fill('testemail@gmail.com');
-        await page.getByRole('textbox', {name:'Phone'}).fill('1202303404');
-        await page.getByRole('textbox', {name:'Message'}).fill('This is a test message');
+        // Fill out the form (by xpath and css selectors)
+        await page.locator('//input[@id="evf-277-field_ys0GeZISRs-1"]').fill('TestName');
+        await page.locator('#evf-277-field_LbH5NxasXM-2').fill('testemail@gmail.com');
+        await page.locator('//*[@id="evf-277-field_66FR384cge-3"]').fill('1202303404');
+        await page.locator('#evf-277-field_yhGx3FOwr2-4').fill('This is a test message');
+
+        // Fill out the form (by role selector) - Works as well
+        // await page.getByRole('textbox', {name:'Name'}).fill('TestName');
+        // await page.getByRole('textbox', {name:'Email'}).fill('testemail@gmail.com');
+        // await page.getByRole('textbox', {name:'Phone'}).fill('1202303404');
+        // await page.getByRole('textbox', {name:'Message'}).fill('This is a test message');
 
          // Locate "Submit" button (by xpath selector) and click on it
         await page.locator('//button[@id="evf-submit-277"]').click(); // It is NOT recomended to use xpath as locators
@@ -200,9 +212,9 @@ test.describe('Home', () => {
         // Verify that the element contains 5 posts
         await expect (listOfPosts).toHaveCount(5);
 
-        // Iterate through the list and verify the char lenght > 10
+        // Iterate through the list and verify the char lenght > 13
         for (const post of await listOfPosts.elementHandles()) {
-            const item = (await post.textContent())?.trim(); // Note: "trim()" method removes the leading and trailing white space
+            const item = (await post.textContent())?.trim(); // Get the text of the post and remove the leading and trailing white space (with "trim()" method)
             console.log(item)
             console.log(item?.length);
             // Verify the char lenght > 10

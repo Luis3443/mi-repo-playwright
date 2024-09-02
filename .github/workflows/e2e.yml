@@ -1,13 +1,13 @@
 name: "e2e" # workflow name
-on: [push]  # Event that will execute the workflow
+on: [push]  # Event that will execute the workflow (each time the code is pushed)
 jobs:  # Job (a set of steps we want to be executed)
   test-e2e:  # Job id
     name: Run E2E tests  # Job name
     runs-on: ubuntu-20.04
     steps: 
       # Stuff we want to be utilized before executing the steps
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4  # Checks out all of the code within the workflow because all the tests are going to be executed
+      - uses: actions/setup-node@v4  # Sets up the node
         with:
           node-version: '16'
       # Set of steps we want to be executed
@@ -18,7 +18,7 @@ jobs:  # Job (a set of steps we want to be executed)
       - name: Run yourt tests
         run: npx playwright test tests/home_pom.spec.ts
       - name: Upload test results  # Integrates the test results report
-        # "Always" to generate the test results always
+        # "Always" is to generate the test results always
         if: always()  
         uses: actions/upload-artifact@v4
         with:

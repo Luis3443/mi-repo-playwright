@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
 import CartPage from '../pages/cart.page';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require('path');
+import path from 'path';
+
 
 test.describe('Upload file', () => {
 
@@ -19,6 +19,7 @@ test.describe('Upload file', () => {
 
     // **********  Parameterize test  **********
     // Array to save the files to be used in the same test
+    /*
     const fileName = ['logotitle.png', 'Image_PlayWright.png'];
 
     // "for" loop to iterate through the files that are in "fileName" array
@@ -37,7 +38,7 @@ test.describe('Upload file', () => {
             // Upload the test file
             cartPage.uploadComponent().uploadFile(filePath);
     
-    
+            // *****  TYPE OF WAITS  *****
             // Harcoded sleep - RECOMMENDED ONLY FOR DEBUGGING PURPOSES
             // await page.waitForTimeout(5000);
     
@@ -49,10 +50,10 @@ test.describe('Upload file', () => {
             await expect(cartPage.uploadComponent().successText).toContainText('uploaded successfully', {timeout: 10000}); // Note: The default timeout for assertions is 5000 miliseconds
         });
     }
+    */
 
 
-
-    /* // This test was commented to run the "Parameterized test" test above
+    // This test will need to be commented to run the "Parameterized test" test above
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     test('Should upload a test file', async ({ page }) => {
 
@@ -72,7 +73,7 @@ test.describe('Upload file', () => {
         // Assertion wait - RECOMMENDED
         //Verify that the successful message contains "uploaded successfully" text
         await expect(cartPage.uploadComponent().successText).toContainText('uploaded successfully', {timeout: 10000}); // Note: The default timeout for assertions is 5000 miliseconds
-    }); */
+    }); 
 
 
     // This test is skipped (using "skip" keyword) to run the "Parameterized test" test above

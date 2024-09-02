@@ -185,13 +185,17 @@ test.describe('Home', () => {
         // Open url
         // await homePage.navigate();
 
+        
+
         // Locate all the elements (by css selector and "last()" method) and save it into a variable
-        const navLinks = homePage.navLinks;
+        // const navLinks = homePage.navLinks;
 
         // Print out all the links
-        for (const element of await navLinks.elementHandles()) { // The method "elementHandles()" is to be able to iterate through all the elements that are into "navLinks"
-            console.log(await element.textContent());
-        }
+        // for (const element of await navLinks.elementHandles()) { // The method "elementHandles()" is to be able to iterate through all the elements that are into "navLinks"
+        //     console.log(await element.textContent());
+        // }
+
+        await homePage.PrintAllNavLinks();
     });
     
 })

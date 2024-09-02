@@ -29,10 +29,11 @@ test.describe('Contact', () => {
         // expect(test.info().errors.length).toBeLessThan(1);
 
         // Verify success message is visible
-        // Locate the element (by ????) and save it into a variable
+        // Locate the element (by CSS) and save it into a variable
         const successMessage = page.locator('div[role="alert"]');
         // Verify the element has the following text:
         await expect(successMessage).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
+        // await expect(successMessage).toHaveText('Fail the test message');  // Asssertion only to force the test to fail
     });
     
 });
