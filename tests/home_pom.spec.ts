@@ -171,7 +171,8 @@ test.describe('Home', () => {
         // Locate the last element (by css selector and "last()" method) and save it into a variable
         const navLink = homePage.navLinks.last(); 
         // Verify the text of the last link
-        await expect(navLink).toHaveText(expectedLinks[5]);  // EsLint's Suggestion
+        // await expect(navLink).toHaveText(expectedLinks[5]);  // EsLint's Suggestion
+        await expect(navLink).toHaveText(expectedLinks[4]);  // To force to fail the test to check Workdlow of Github actions
         // expect(await navLink.textContent()).toEqual(expectedLinks[5]);
     });
 
