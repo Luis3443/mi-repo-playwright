@@ -26,11 +26,11 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: 'html',
+  reporter: 'html',
   // reporter: 'allure-playwright',
   // reporter: [ ['html'], ['list'] ],  // Wnen we want to use several types of reports
   // reporter: [ ['allure-playwright'], ['line'] ],  // Wnen we want to use several types of reports
-  reporter: [ ['allure-playwright', {outputFolder: 'test-results'}], ['line'] ],  // Wnen we want to use several types of reports.
+  // reporter: [ ['allure-playwright', {outputFolder: 'test-results'}], ['line'] ],  // Wnen we want to use several types of reports.
     // Note: The stuff inside "{}" means that the allure test results now will be saved in "test-results" folder instead in "allure-report"
   
 
@@ -58,8 +58,9 @@ export default defineConfig({
     
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], headless: true },
+      use: { ...devices['Desktop Chrome'], headless: false },
     },
+    
     
     /*
     {

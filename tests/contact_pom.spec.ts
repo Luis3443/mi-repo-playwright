@@ -26,6 +26,7 @@ test.describe('Contact', () => {
 
         // Fill the form - Using dynamic data and "fakerJs" library to generate data automatically
         await contactPage.fillForm(faker.person.fullName(), faker.internet.email(), faker.phone.number(), faker.lorem.paragraphs(2));
+        
         // Fill the form - Using hardcoded data
         // await contactPage.fillForm();
 

@@ -62,7 +62,12 @@ test.describe('Actions for web elements', () => {
         // Open the url
         await page.goto('https://testautomationpractice.blogspot.com/');
         // Select several options in "Colors" list box
-        await page.locator('//*[@id="colors"]').selectOption(['Blue','Yellow']);
+        await page.locator('//*[@id="colors"]').selectOption(['Blue','Yellow']);  // By label (visible text)
+        // await page.locator('//*[@id="colors"]').selectOption([{label:'Blue'}, {label:'Yellow'}]);  // By label (visible text)
+        // await page.locator('//*[@id="colors"]').selectOption(['red','green']);  // By "value" attribute
+        // await page.locator('//*[@id="colors"]').selectOption([{index:0},{index:2}]);  // By index
+        
+        await page.waitForTimeout(3000);
     })
 
     test('Drag and drop', async ({ page }) => {
@@ -87,48 +92,5 @@ test.describe('Actions for web elements', () => {
         // await page.locator('//h3[contains(text(),"Latest Posts & Articles")]').scrollIntoViewIfNeeded(); // Works as well
         // await page.locator('//h3[normalize-space()="Latest Posts & Articles"]').scrollIntoViewIfNeeded(); // Works as well
     });
-
-    test('Working with frames', async ({ page }) => {
-        // Open the url
-        await page.goto('https://ui.vision/demo/webtest/frames/');
-
-        // Get the amount of frames existing in the page
-        // const allFrames = page.frames();
-        // console.log('Ammout of Frames:' + allFrames.length);
-
-        
-        // Frame 1
-        const frame1 = page.frameLocator('//html[1]/frameset[1]/frame[1]');
-        await frame1.locator('input[name="mytext1"]').fill('Test in frame_1');
-        // Frame 1 - works as well
-        // const textbox1 = page.frameLocator('//html[1]/frameset[1]/frame[1]').locator('input[name="mytext1"]');
-        // textbox1.fill('Test in frame_1');
-
-        // Frame 2
-        const frame2 = page.frameLocator('//frameset//frameset//frame[1]');
-        await frame2.locator('input[name="mytext2"]').fill('Test in frame_2');
-
-        // Frame 3
-        const frame3 = page.frameLocator('frame[src="frame_3.html"]');
-        await frame3.locator('input[name="mytext3"]').fill('Test in frame_3');
-        // Frame 3_1 - NOT WORKING
-        // const frame3_1 = page.frameLocator('//iframe[normalize-space()="Loading..."]');  
-        // await frame3_1.locator('//a[contains(text(),"Más información")]').click();  // Click on "Más información" link
-        // // await frame3_1.locator('text=Más información').click();  // Click on "Más información" link
-
-        // Frame 4
-        const frame4 = page.frameLocator('frame[src="frame_4.html"]');
-        await frame4.locator('input[name="mytext4"]').fill('Test in frame_4');
-
-        // Frame 5
-        const frame5 = page.frameLocator('//html[1]/frameset[1]/frame[2]');
-        await frame5.locator('input[name="mytext5"]').fill('Test in frame_5');
-        await frame5.locator('text=https://a9t9.com').click();  // Click on  link "https://a9t9.com"
-
-        await page.waitForTimeout(5000);
-
-    })
-    
-
     
 });

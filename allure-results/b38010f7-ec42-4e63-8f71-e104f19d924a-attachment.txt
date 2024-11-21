@@ -1,0 +1,1 @@
+locator('#zak-primary-menu li[id*="menu-item-"]')
