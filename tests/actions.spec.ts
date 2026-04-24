@@ -67,7 +67,7 @@ test.describe('Actions for web elements', () => {
         // await page.locator('//*[@id="colors"]').selectOption(['red','green']);  // By "value" attribute
         // await page.locator('//*[@id="colors"]').selectOption([{index:0},{index:2}]);  // By index
         
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(3000);  // For debbuging purposes
     })
 
     test('Drag and drop', async ({ page }) => {

@@ -27,7 +27,7 @@ test.describe('Upload file', () => {
 
         // Set timeout for a single test - NOT RECOMMENDED
         // test.slow();   // Easy way to triple the default timeout
-        // test.setTimeout(120000);   // Changes the timeout for the test
+        // test.setTimeout(120000);   // Overrides the default timeout for the test
 
 
         // Harcoded sleep - RECOMMENDED ONLY FOR DEBUGGING PURPOSES
