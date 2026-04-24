@@ -13,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
 
-  /* Run tests in files in parallel */
+  /* Run tests in files in parallel or serial */
   fullyParallel: true,
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -32,19 +32,19 @@ export default defineConfig({
   // reporter: [ ['allure-playwright'], ['line'] ],  // Wnen we want to use several types of reports
   // reporter: [ ['allure-playwright', {outputFolder: 'test-results'}], ['line'] ],  // Wnen we want to use several types of reports.
     // Note: The stuff inside "{}" means that the allure test results now will be saved in "test-results" folder instead in "allure-report"
-  
 
   // Configuration for Signed-in State - This is registering the global setup file to be used for all the tests.
   globalSetup: require.resolve('./utils/global-setup'),
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://practice.sdetunicorns.com',
     // baseURL: 'http://127.0.0.1:3000',
     
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    // trace: 'on',  // Shows the trace (in the results report) for each tests. 
+    // trace: 'on',  // Shows the trace (in the results report) for each tests regardless the tests have passed or failed. 
     // trace: 'off',  // Do not show the trace (in the results report).
     trace: 'retain-on-failure', // Shows the trace (in the results report) only for the tests that have failed.
     // trace: 'on-first-retry', // Shows the trace (in the results report) only when retrying a test for the first time.

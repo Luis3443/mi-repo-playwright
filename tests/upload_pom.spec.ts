@@ -20,10 +20,10 @@ test.describe('Upload file', () => {
     // **********  Parameterize test  **********
     
     // Array to save the files to be used in the same test
-    const fileName = ['logotitle.png', 'Image_PlayWright.png'];
+    const fileNames = ['logotitle.png', 'Image_PlayWright.png'];
 
-    // "for" loop to iterate through the files that are in "fileName" array
-    for (const name of fileName) {
+    // "for" loop to iterate through the files that are in "fileNames" array
+    for (const name of fileNames) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         test(`Should upload a ${name} file`, async ({ page }) => {
 
@@ -43,11 +43,11 @@ test.describe('Upload file', () => {
             // *****  TYPE OF WAITS  *****
 
             // Set timeout for a single test - NOT RECOMMENDED
-            // test.slow(); // Easy way to triple the default timeout
-            // test.setTimeout(120000);
+            // test.slow();   // Easy way to triple the default timeout
+            // test.setTimeout(120000);   // Changes the timeout for the test
 
             // Harcoded sleep - RECOMMENDED ONLY FOR DEBUGGING PURPOSES
-            // await page.waitForTimeout(5000);
+            // await page.waitForTimeout(5000);   // It pauses the execution for the given time
 
             // Conditional wait - RECOMMENDED
             // await (cartPage.uploadComponent().successText).waitFor({state: 'visible', timeout: 10000});
@@ -79,7 +79,7 @@ test.describe('Upload file', () => {
         // test.slow(); // Easy way to triple the default timeout
         // test.setTimeout(120000);
 
-        // Harcoded sleep - RECOMMENDED ONLY FOR DEBUGGING PURPOSES
+        // Harcoded wait - RECOMMENDED ONLY FOR DEBUGGING PURPOSES
         // await page.waitForTimeout(5000);
 
         // Conditional wait - RECOMMENDED

@@ -4,6 +4,13 @@ import HomePage from '../pages/home.page';
 
 test.describe('Home', () => {
 
+    // To run all tests in "serial mode"
+    // test.describe.configure({ mode: 'serial' });
+
+    // To run all tests in "parallel mode"
+    // test.describe.configure({ mode: 'parallel' });
+
+    
     // Creating a variable (of type "HomePage" class) which will store an object of that class for each test
     let homePage: HomePage;
 
@@ -199,4 +206,4 @@ test.describe('Home', () => {
         await homePage.PrintAllNavLinks();
     });
     
-})
+});
