@@ -20,7 +20,7 @@ test.describe('Home', () => {
         homePage = new HomePage(page); 
         // Open url
         await homePage.navigate();
-    })
+    });
 
     test('Open "Home" page and verify title', async ({ page }) => {
         // Verify title
